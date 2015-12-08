@@ -41,3 +41,13 @@ function jetpack_svgenericons_inject_sprite() {
 	 include_once( $file_path .'svgenericons/svgenericons.svg' );
 }
 add_filter( 'wp_footer' , 'jetpack_svgenericons_inject_sprite' );
+
+/*
+ * This allows for easy injection of SVG references inline.
+ * Usage: jetpack_svngenericon( 'name-of-icon' );
+ */
+ function jetpack_svgenericon( $name ) { ?>
+	 <svg class="svgenericon">
+		 <use xlink:href="#svgenericon-<?php echo $name; ?>" />
+	 </svg>
+ <?php }
