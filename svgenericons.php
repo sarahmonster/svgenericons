@@ -50,17 +50,26 @@ add_filter( 'wp_footer' , 'jetpack_svgenericons_inject_sprite' );
  * or need added to their headers, so we'll see.
  * See: https://github.com/jonathantneal/svg4everybody
  */
- function jetpack_svgenericons_ie_shim() {
-	 echo '<meta http-equiv="x-ua-compatible" content="ie=edge">';
- }
- add_filter( 'wp_head' , 'jetpack_svgenericons_ie_shim' );
+function jetpack_svgenericons_ie_shim() {
+ echo '<meta http-equiv="x-ua-compatible" content="ie=edge">';
+}
+add_filter( 'wp_head' , 'jetpack_svgenericons_ie_shim' );
+
+/*
+  * This allows us to get the SVG code and return as a variable
+  * Usage: get_jetpack_svgenericon( 'name-of-icon' );
+  */
+function get_jetpack_svgenericon( $name ) {
+	$return = '<svg class="svgenericon svgenericon-' . $name . '">';
+	 	$return .= '<use xlink:href="#svgenericon-' . $name . '" />';
+	 	$return .= '</svg>';
+ return $return;
+}
 
 /*
  * This allows for easy injection of SVG references inline.
  * Usage: jetpack_svgenericon( 'name-of-icon' );
  */
- function jetpack_svgenericon( $name ) { ?>
-	 <svg class="svgenericon svgenericon-<?php echo $name; ?>">
-		 <use xlink:href="#svgenericon-<?php echo $name; ?>" />
-	 </svg>
- <?php }
+function jetpack_svgenericon( $name ) {
+	echo get_jetpack_svgenericon( $name );
+}
