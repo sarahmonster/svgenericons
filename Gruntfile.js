@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		// Set up SVGstore to make us an SVG sprite!
 	  svgstore: {
 	    options: {
-	      prefix : 'genericon-',
+	      prefix : 'svgenericon-',
 	      svg: {
 	        xmlns: 'http://www.w3.org/2000/svg'
 	      },
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 			// Default task compiles all svgs in the source folder to a single sprite
 			default : {
 		    files: {
-		      'genericons/genericons.svg': ['source/*.svg'],
+		      'svgenericons/svgenericons.svg': ['source/*.svg'],
 		    }
 		  }
 	  }
