@@ -6,12 +6,14 @@ module.exports = function(grunt) {
 		// Set up SVGstore to make us an SVG sprite!
 	  svgstore: {
 	    options: {
-	      prefix : 'icon-', // This will prefix each ID
-	      svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
-	        viewBox : '0 0 100 100',
+	      prefix : 'genericon-',
+	      svg: {
 	        xmlns: 'http://www.w3.org/2000/svg'
-	      }
+	      },
+				cleanup : ['style', 'fill', 'id']
 	    },
+
+			// Default task compiles all svgs in the source folder to a single sprite
 			default : {
 		    files: {
 		      'genericons/genericons.svg': ['source/*.svg'],
