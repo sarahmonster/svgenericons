@@ -43,8 +43,21 @@ function jetpack_svgenericons_inject_sprite() {
 add_filter( 'wp_footer' , 'jetpack_svgenericons_inject_sprite' );
 
 /*
+ * Inject some header code to make IE play nice.
+ *
+ * This seems to do the trick, but may require more testing.
+ * Also may not be something theme authors necessarily want
+ * or need added to their headers, so we'll see.
+ * See: https://github.com/jonathantneal/svg4everybody
+ */
+ function jetpack_svgenericons_ie_shim() {
+	 echo '<meta http-equiv="x-ua-compatible" content="ie=edge">';
+ }
+ add_filter( 'wp_head' , 'jetpack_svgenericons_ie_shim' );
+
+/*
  * This allows for easy injection of SVG references inline.
- * Usage: jetpack_svngenericon( 'name-of-icon' );
+ * Usage: jetpack_svgenericon( 'name-of-icon' );
  */
  function jetpack_svgenericon( $name ) { ?>
 	 <svg class="svgenericon">
