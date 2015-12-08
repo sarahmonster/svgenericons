@@ -60,7 +60,7 @@ add_filter( 'wp_footer' , 'jetpack_svgenericons_inject_sprite' );
  * Usage: jetpack_svgenericon( 'name-of-icon' );
  */
  function jetpack_svgenericon( $name ) { ?>
-	 <svg class="svgenericon">
+	 <svg class="svgenericon svgenericon-<?php echo $name; ?>">
 		 <use xlink:href="#svgenericon-<?php echo $name; ?>" />
 	 </svg>
  <?php }
