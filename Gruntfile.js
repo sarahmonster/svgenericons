@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 	    options: {
 	      prefix : 'svgenericon-',
 	      svg: {
-	        xmlns: 'http://www.w3.org/2000/svg'
+	        xmlns: 'http://www.w3.org/2000/svg',
+					class: 'svgenericon-sprite'
 	      },
 				cleanup : ['style', 'fill', 'id']
 	    },
