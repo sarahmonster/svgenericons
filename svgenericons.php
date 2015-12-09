@@ -9,19 +9,16 @@
  * add_theme_support( 'jetpack-svgenericons' );
  */
 
- /*
-  * Only load our code if our theme declares support
-	*/
- if ( ! current_theme_supports( 'jetpack-svgenericons' ) ) {
-	 return;
- }
-
 /**
  * Activate the SVGenericons plugin.
  *
  * @uses current_theme_supports()
  */
 function jetpack_svgenericons_init() {
+	// Only load our code if our theme declares support
+	if ( ! current_theme_supports( 'jetpack-svgenericons' ) ) {
+		return;
+	}
 	add_action( 'wp_enqueue_scripts', 'jetpack_svgenericons_styles' );
 }
 add_action( 'after_setup_theme', 'jetpack_svgenericons_init', 99 );
@@ -40,8 +37,8 @@ function jetpack_svgenericons_styles() {
  * See: https://code.google.com/p/chromium/issues/detail?id=349175
  */
 function jetpack_svgenericons_inject_sprite() {
-	 $file_path = $dir = plugin_dir_path( __FILE__ );
-	 include_once( $file_path .'svgenericons/svgenericons.svg' );
+	$file_path = $dir = plugin_dir_path( __FILE__ );
+	include_once( $file_path .'svgenericons/svgenericons.svg' );
 }
 add_filter( 'wp_footer' , 'jetpack_svgenericons_inject_sprite' );
 
