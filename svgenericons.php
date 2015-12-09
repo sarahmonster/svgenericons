@@ -9,16 +9,19 @@
  * add_theme_support( 'jetpack-svgenericons' );
  */
 
+ /*
+  * Only load our code if our theme declares support
+	*/
+ if ( ! current_theme_supports( 'jetpack-svgenericons' ) ) {
+	 return;
+ }
+
 /**
  * Activate the SVGenericons plugin.
  *
  * @uses current_theme_supports()
  */
 function jetpack_svgenericons_init() {
-	// Only load our code if our theme declares support
-	if ( ! current_theme_supports( 'jetpack-svgenericons' ) ) {
-		return;
-	}
 	add_action( 'wp_enqueue_scripts', 'jetpack_svgenericons_styles' );
 }
 add_action( 'after_setup_theme', 'jetpack_svgenericons_init', 99 );
