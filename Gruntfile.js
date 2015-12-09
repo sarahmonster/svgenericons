@@ -20,12 +20,25 @@ module.exports = function(grunt) {
 		      'svgenericons/svgenericons.svg': ['source/*.svg'],
 		    }
 		  }
+	  },
+
+	// Copy our svgenericons.php file to the plugin directory
+	copy: {
+	  main: {
+	    files: [{
+	    	expand: true,
+	      cwd: '',
+	      src: ['svgenericons.php'],
+	      dest: 'svgenericons/'
+	    }]
 	  }
+	}
 	});
 
 	// Load our required plugins
 	grunt.loadNpmTasks('grunt-svgstore');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Set up our default task
-	grunt.registerTask('default', ['svgstore']);
+	grunt.registerTask('default', ['svgstore', 'copy']);
 }
